@@ -1,0 +1,300 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/169a0e69c0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'img/apple-touch-icon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'img/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'img/favicon-16x16.png' %}"
+    />
+    <link rel="manifest" href="{% static 'css/site.webmanifest' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>AIProsto</title>
+  </head>
+  <body class="active">
+    <div class="wrapper">
+      <section class="main-section">
+        <div class="tabs-logo-row">
+          <img src="{% static 'img/logo.png' %}" alt="logo" class="tabs-logo" />
+        </div>
+        <header class="header">
+          <div class="header-container"></div>
+        </header>
+        <main class="tabs-section">
+          <div class="tabs-container">
+            <div class="tabs-body">
+              <div class="tabs-header">
+                <div class="tabs-tab tab-1 active">Анкета</div>
+              </div>
+              <div class="tabs-content">
+                <div class="tab-content tab-content-1 active">
+                  <form method="post" action="{% url 'main:form' %}" class="tabs-content-form profile-form">
+                    {% csrf_token %}
+                    <div class="tab-content-inputs">
+                      <div class="input-wrapper input-wrapper-top">
+                        <div
+                          class="tab-content-input-profile-body-gender tab-input"
+                        >
+                          Укажите пол
+                          <div class="tab-content-input-profile-row-gender">
+                            <label
+                              class="tab-content-input-profile-gender-label label-mars"
+                              for="gender-1"
+                              >
+                              {% comment %} <input
+                                id="gender-1"
+                                name="gender"
+                                type="radio"
+                                value="Мужчина"
+                                class="tab-content-input-profile-gender"
+                                tabindex="-1"
+                              /> {% endcomment %}
+                              {{ form.gender_mars }}
+                              Мужчина</label
+                            >
+                          </div>
+                          <div class="tab-content-input-profile-row-gender">
+                            <label
+                              class="tab-content-input-profile-gender-label label-venus"
+                              for="gender-2"
+                              >
+                              {% comment %} <input
+                                id="gender-2"
+                                name="gender"
+                                type="radio"
+                                value="Женщина"
+                                class="tab-content-input-profile-gender"
+                                tabindex="-1"
+                              /> {% endcomment %}
+                              {{ form.gender_venus }}
+                              Женщина</label
+                            >
+                          </div>
+                        </div>
+                        <div
+                          class="tab-content-input-profile-body-city tab-input"
+                        >
+                          Проживаете в городе
+                          <div class="tab-content-input-profile-row-city">
+                            <label
+                              class="tab-content-input-profile-city-label"
+                              for="city-1"
+                              >
+                              {% comment %} <input
+                                id="city-1"
+                                name="city"
+                                type="radio"
+                                value="Да"
+                                class="tab-content-input-profile-city"
+                                tabindex="-1"
+                              /> {% endcomment %}
+                              {{ form.city_true }}
+                              Да
+                              </label
+                            >
+                          </div>
+                          <div class="tab-content-input-profile-row-city">
+                            <label
+                              class="tab-content-input-profile-city-label"
+                              for="city-2"
+                              >
+                              {% comment %} <input
+                                id="city-2"
+                                name="city"
+                                type="radio"
+                                value="Нет"
+                                class="tab-content-input-profile-city"
+                                tabindex="-1"
+                              /> {% endcomment %}
+                              {{ form.city_false }}
+                              Нет
+                              </label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="input-wrapper">
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-post-index tab-input"
+                        >
+                          {% comment %} <input
+                            placeholder="Укажите фамилию"
+                            type="text"
+                            class="tab-content-input-profile tab-content-input-profile-surname"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {{ form.age }}
+                        </div>
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-birthdate tab-input"
+                        >
+                          {% comment %} <input
+                            placeholder="Укажите имя"
+                            type="text"
+                            class="tab-content-input-profile tab-content-input-profile-name"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          
+                          {{ form.brth_yr }}
+                        </div>
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-post-index tab-input"
+                        >
+                          {% comment %} <input
+                            placeholder="Укажите отчество (при наличии)"
+                            type="text"
+                            class="tab-content-input-profile tab-content-input-profile-middlename"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {{ form.accnt_pnsn_schm }}
+                        </div>
+                      </div>
+                      <div class="input-wrapper">
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-post-index tab-input active"
+                        >
+                          {% comment %} <input
+                            placeholder="Укажите дату рождения"
+                            type="date"
+                            class="tab-content-input-profile tab-content-input-profile-birthdate"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {{ form.year_oper }}
+                        </div>
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-post-index tab-input"
+                        >
+                          {% comment %} <input
+                            placeholder="Укажите почтовый индекс"
+                            type="number"
+                            class="tab-content-input-profile tab-content-input-profile-post-index"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {{ form.quarter }}
+                        </div>
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-salary tab-input"
+                        >
+                          {% comment %} <input
+                            placeholder="Баланс счета клиента, ₽"
+                            type="number"
+                            class="tab-content-input-profile tab-content-input-profile-salary"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {{ form.enter_year }}
+                        </div>
+                      </div>
+                      <div class="input-wrapper">
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-sum tab-input"
+                        >
+                          {% comment %} <input
+                            placeholder="Сумма взносов клиента, ₽"
+                            type="number"
+                            class="tab-content-input-profile tab-content-input-profile-sum"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {{ form.years_without_contrib }}
+                        </div>
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-sum-count tab-input"
+                        >
+                          {% comment %} <input
+                            placeholder="Число взносов клиента"
+                            type="number"
+                            class="tab-content-input-profile tab-content-input-profile-sum-count"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {{ form.region }}
+                        </div>
+                        {% comment %} <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-first-сontribution tab-input active"
+                        > {% endcomment %}
+                          {% comment %} <input
+                            placeholder="Дата первого взноса"
+                            type="date"
+                            class="tab-content-input-profile tab-content-input-profile-first-сontribution"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {% comment %} {{ form.first_date }}
+                        </div>
+                      </div>
+                      <div class="input-wrapper">
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-last-сontribution tab-input active"
+                        > {% endcomment %}
+                          {% comment %} <input
+                            placeholder="Дата последнего взноса"
+                            type="date"
+                            class="tab-content-input-profile tab-content-input-profile-last-сontribution"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {% comment %} {{ form.last_date }}
+                        </div>
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-sum-contribution tab-input"
+                        > {% endcomment %}
+                          {% comment %} <input
+                            placeholder="Сумма дохода начисленного на счет клиента, ₽"
+                            type="number"
+                            class="tab-content-input-profile tab-content-input-profile-sum-contribution"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {% comment %} {{ form.amount_of_income }}
+                        </div>
+                        <div
+                          class="tab-content-input-profile-row tab-content-input-profile-row-contribution-amount tab-input"
+                        > {% endcomment %}
+                          {% comment %} <input
+                            placeholder="Размер операций по счету клиента, ₽"
+                            type="number"
+                            class="tab-content-input-profile tab-content-input-profile-contribution-amount"
+                            tabindex="-1"
+                          /> {% endcomment %}
+                          {% comment %} {{ form.operation_size }}
+                        </div> {% endcomment %}
+                      </div>
+                    </div>
+                    <button
+                      type="submit"
+                      class="tabs-content-form-submit-button profile-form-submit"
+                      tabindex="-1"
+                    >
+                      Отправить
+                    </button>
+                    {% if predict %}
+                      <p>Результат: {{ predict.0 }} <br> {{ predict.1 }}
+                    {% endif %}
+                  </form>
+                  <iframe frameborder="0" src="https://datalens.yandex/bk1hbjp23yh00?_embedded=1&_no_controls=1&_theme=dark" width="100%" height="800px"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>
